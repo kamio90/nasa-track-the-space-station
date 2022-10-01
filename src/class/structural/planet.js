@@ -41,6 +41,8 @@ export class Planet extends SpaceObject {
     });
   }
 
+  setSha
+
   movePlanet(vector) {
     this.position = this.position.addThirdDimensionVector(vector);
     this.mesh.position.x = this.position.getX();

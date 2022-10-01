@@ -5,7 +5,7 @@ export class CustomCamera {
     fov = 75,
     aspect = 0,
     near = 0.001,
-    far = 5000,
+    far = 50000000,
     positionX = 1,
     positionY = 1,
     positionZ = 50
