@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import "./style/main.css";
 /**
  * GUI Controls
@@ -7,6 +6,7 @@ import "./style/main.css";
 import * as dat from "dat.gui";
 import { Planet } from "./class/structural/planet";
 import { CustomCamera } from "./class/threejs/custom-camera";
+import { CustomControls } from "./class/threejs/custom-controlls";
 import { CustomScene } from "./class/threejs/custom-scene";
 import { ThirdDimensionVector } from "./class/types/third-dimension-vector";
 const gui = new dat.GUI();
@@ -74,18 +74,7 @@ const camera = new CustomCamera();
 scene.addObjToScene(camera.getCamera());
 
 // Controls
-const controls = new OrbitControls(camera.getCamera(), canvas);
-controls.enableDamping = true;
-controls.autoRotate = true;
-// controls.enableZoom = false
-controls.enablePan = false;
-controls.dampingFactor = 0.05;
-controls.maxDistance = 1000;
-controls.minDistance = 30;
-controls.touches = {
-  ONE: THREE.TOUCH.ROTATE,
-  TWO: THREE.TOUCH.DOLLY_PAN,
-};
+const controls = new CustomControls(camera.getCamera(), canvas);
 /**
  * Renderer
  */
@@ -108,7 +97,7 @@ const tick = () => {
   mesh.rotation.z += 0.01 * Math.sin(1);
 
   // Update controls
-  controls.update();
+  controls.getControls().update();
   // Render
   renderer.render(scene.getScene(), camera.getCamera());
 
