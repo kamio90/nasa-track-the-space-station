@@ -47,6 +47,6 @@ export class CustomText {
   }
 
   getText() {
-    return this.geometry;
+    return new THREE.Mesh(his.geometry);
   }
 }

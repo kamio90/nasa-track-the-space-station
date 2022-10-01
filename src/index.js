@@ -23,14 +23,14 @@ const gui = new dat.GUI();
 const canvas = document.querySelector("canvas.webgl");
 const scene = new CustomScene();
 
-const size = 10000;
-const divisions = 1000;
+const size = 100;
+const divisions = 10;
 
 const gridHelper = new THREE.GridHelper(size, divisions);
 //scene.addObjToScene( gridHelper );
 
 sun.setupScene(scene);
-sun._LoadFBXModel(PlanetsEnum.sun, 0.001);
+sun._LoadFBXModel("http://localhost:8000/sun.fbx", 0.00001);
 mercury.setupScene(scene);
 mercury._LoadFBXModel(PlanetsEnum.mercury, 0.1);
 venus.setupScene(scene);
@@ -40,9 +40,9 @@ earth._LoadFBXModel(PlanetsEnum.earth, 0.1);
 mars.setupScene(scene);
 mars._LoadFBXModel(PlanetsEnum.mars, 0.1);
 jupiter.setupScene(scene);
-jupiter._LoadFBXModel(PlanetsEnum.jupiter, 0.01);
-// saturn.setupScene(scene);
-// saturn._LoadFBXModel(PlanetsEnum.saturn, 0.0001);
+jupiter._LoadFBXModel("http://localhost:8000/jupiter.fbx", 0.01);
+saturn.setupScene(scene);
+saturn._LoadFBXModel("http://localhost:8000/saturn.fbx", 0.01);
 uranus.setupScene(scene);
 uranus._LoadFBXModel(PlanetsEnum.uranus, 0.05);
 neptune.setupScene(scene);
@@ -103,6 +103,7 @@ const clock = new THREE.Clock();
 const tick = () => {
   // Update controls
   controls.getControls().update();
+  //earth.movePlanet
   // Render
   renderer.render(scene.getScene(), camera.getCamera());
 
