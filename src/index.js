@@ -7,6 +7,7 @@ import * as dat from "dat.gui";
 import { Planet } from "./class/structural/planet";
 import { CustomCamera } from "./class/threejs/custom-camera";
 import { CustomControls } from "./class/threejs/custom-controlls";
+import { CustomRenderer } from "./class/threejs/custom-renderer";
 import { CustomScene } from "./class/threejs/custom-scene";
 import { ThirdDimensionVector } from "./class/types/third-dimension-vector";
 const gui = new dat.GUI();
@@ -78,12 +79,10 @@ const controls = new CustomControls(camera.getCamera(), canvas);
 /**
  * Renderer
  */
-const renderer = new THREE.WebGLRenderer({
+const renderer = new CustomRenderer({
   canvas: canvas,
   antialias: true,
 });
-renderer.setSize(sizes.width, sizes.height);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 /**
  * Animate
@@ -91,10 +90,6 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 const clock = new THREE.Clock();
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
-
-  mesh.rotation.y += 0.01 * Math.sin(1);
-  mesh.rotation.y += 0.01 * Math.sin(1);
-  mesh.rotation.z += 0.01 * Math.sin(1);
 
   // Update controls
   controls.getControls().update();
