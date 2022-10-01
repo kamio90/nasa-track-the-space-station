@@ -31,7 +31,7 @@ const gridHelper = new THREE.GridHelper( size, divisions );
 
 sun.setupScene(scene);
 //sun._LoadFBXModel("http://localhost:8000/sun.fbx", 0.00001);
-sun._LoadFBXModel("http://localhost:8000/stacja_test.fbx", 0.0001);
+sun._LoadFBXModel("http://localhost:8000/stacja_test2.fbx", 0.001);
 mercury.setupScene(scene);
 mercury._LoadFBXModel("http://localhost:8000/mercury.fbx", 0.1);
 venus.setupScene(scene);
