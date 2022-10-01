@@ -1,8 +1,7 @@
 export class SpaceObject {
-  constructor(id, name, model, wordPosition, wordRotation, wordPath,webLinks) {
+  constructor(id, name, wordPosition, wordRotation, wordPath,webLinks) {
     this.id = id;
     this.name = name;
-    this.model = model;
     this.wordPosition = wordPosition;
     this.wordRotation = wordRotation;
     this.wordPath = wordPath;
@@ -16,10 +15,6 @@ export class SpaceObject {
 
   setName(name) {
     this.name = name;
-  }
-
-  setModel(model) {
-    this.model = model;
   }
 
   setWordPosition(wordPosition) {
@@ -45,10 +40,6 @@ export class SpaceObject {
 
   getName() {
     return this.name;
-  }
-
-  getModel() {
-    return this.model;
   }
 
   getWordPosition() {

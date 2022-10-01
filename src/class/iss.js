@@ -1,9 +1,9 @@
 import { SpaceObject } from "./space-object";
 
 export class ISS extends SpaceObject {
-  constructor(id, name, model, wordPosition, wordRotation, wordPath, webLinks,
+  constructor(id, name, wordPosition, wordRotation, wordPath, webLinks,
     noradId, localTime, utc, latitude, longitude, speed, altitude) {
-    super(id, name, model, wordPosition, wordRotation, wordPath,webLinks);
+    super(id, name, wordPosition, wordRotation, wordPath,webLinks);
     this.noradId = noradId;
     this.localTime = localTime;
     this.utc = utc;

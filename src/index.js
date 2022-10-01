@@ -5,6 +5,8 @@ import './style/main.css'
  * GUI Controls
  */
 import * as dat from 'dat.gui'
+import { Planet } from './class/planet'
+import { ThirdDimensionVector } from './class/types/third-dimension-vector'
 const gui = new dat.GUI()
 
 /**
@@ -19,7 +21,27 @@ const scene = new THREE.Scene()
 /**
  * Object
  */
-const geometry = new THREE.IcosahedronGeometry(20, 1)
+const planet = new Planet(
+  1,
+  'earth',
+  new ThirdDimensionVector(10,10,10),
+  new ThirdDimensionVector(10,10,10),
+  {
+    points: [
+      new ThirdDimensionVector(10,10,10),
+      new ThirdDimensionVector(20,20,20)
+    ]
+  },
+  [
+    "www.google.com",
+    "www.google.com"
+  ],
+  100,
+  10,
+  10
+  );
+const geometry = planet.getBufferGeometry();
+//const geometry = new THREE.IcosahedronGeometry(10, 1)
 const material = new THREE.MeshNormalMaterial()
 // Material Props.
 material.wireframe = true
