@@ -4,66 +4,17 @@ import "./style/main.css";
  * GUI Controls
  */
 import * as dat from "dat.gui";
-import { Planet } from "./class/structural/planet";
 import { CustomCamera } from "./class/threejs/custom-camera";
 import { CustomControls } from "./class/threejs/custom-controlls";
 import { CustomRenderer } from "./class/threejs/custom-renderer";
 import { CustomScene } from "./class/threejs/custom-scene";
-import { ThirdDimensionVector } from "./class/types/third-dimension-vector";
+import { earth } from "./data/planets/earth";
 const gui = new dat.GUI();
-/**
- * Base
- */
-// Canvas
+
 const canvas = document.querySelector("canvas.webgl");
-
-// Scene
 const scene = new CustomScene();
-// const scene = new THREE.Scene()
-
-/**
- * Object
- */
-const earth = new Planet(
-  1,
-  "earth",
-  new ThirdDimensionVector(10, 10, 10),
-  new ThirdDimensionVector(10, 10, 10),
-  {
-    points: [
-      new ThirdDimensionVector(10, 10, 10),
-      new ThirdDimensionVector(20, 20, 20),
-    ],
-  },
-  ["www.google.com", "www.google.com"],
-  100,
-  10,
-  10,
-  scene,
-  "https://solartextures.b-cdn.net/2k_jupiter.jpg"
-);
-const mars = new Planet(
-  2,
-  "mars",
-  new ThirdDimensionVector(-10, -10, -10),
-  new ThirdDimensionVector(-10, -10, -10),
-  {
-    points: [
-      new ThirdDimensionVector(10, 10, 10),
-      new ThirdDimensionVector(20, 20, 20),
-    ],
-  },
-  ["www.google.com", "www.google.com"],
-  100,
-  10,
-  10,
-  scene,
-  "https://solartextures.b-cdn.net/2k_jupiter.jpg"
-);
-
-earth._LoadFBXModel("./sphere1.fbx");
-// scene.addObjToScene(earthMesh, earth.getID, earth.getName());
-// scene.addObjToScene(marsMesh, mars.getID, mars.getName());
+earth.setupScene(scene);
+earth._LoadFBXModel("http://localhost:8000/sphere1.fbx", 0.2);
 
 var lights = [];
 lights[0] = new THREE.PointLight(0xffffff, 1, 0);
@@ -119,8 +70,6 @@ const renderer = new CustomRenderer({
  */
 const clock = new THREE.Clock();
 const tick = () => {
-  const elapsedTime = clock.getElapsedTime();
-
   // Update controls
   controls.getControls().update();
   // Render
