@@ -18,7 +18,6 @@ import { saturn } from "./data/planets/saturn";
 import { sun } from "./data/planets/sun";
 import { uranus } from "./data/planets/uranus";
 import { venus } from "./data/planets/venus";
-import { ThirdDimensionVector } from "./class/types/third-dimension-vector";
 
 const gui = new dat.GUI();
 
@@ -61,8 +60,6 @@ lights[0].intensity = 2;
 scene.addObjToScene(lights[0]);
 scene.addObjToScene(lights[1]);
 
-console.log(scene);
-
 /**
  * Sizes
  */
@@ -104,12 +101,15 @@ const renderer = new CustomRenderer({
 const clock = new THREE.Clock();
 let saturn_timer = 0;
 const tick = () => {
-
   saturn_timer += 0.1;
 
+  saturn.setX(20 * Math.cos(saturn_timer));
+  saturn.setZ(20 * Math.sin(saturn_timer));
 
-  saturn.setX( 20 * Math.cos(saturn_timer));
-  saturn.setZ( 20 * Math.sin(saturn_timer));
+  if (saturn.mesh != undefined) {
+    console.log(saturn.mesh);
+    saturn.mesh.updateMatrix();
+  }
   saturn.updatePlanetPosition();
 
   // Update controls

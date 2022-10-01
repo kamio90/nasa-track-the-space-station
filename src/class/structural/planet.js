@@ -54,9 +54,9 @@ export class Planet extends SpaceObject {
     // mesh.rotation.z += 0.01 * Math.sin(1);
   }
 
-  _LoadFBXModel(url, scale) {
+  async _LoadFBXModel(url, scale) {
     const fbxLoader = new FBXLoader();
-    fbxLoader.load(url, (obj) => {
+    await fbxLoader.load(url, (obj) => {
       obj.scale.multiplyScalar(scale);
       obj.position.x = this.position.getX();
       obj.position.y = this.position.getY();
@@ -69,9 +69,13 @@ export class Planet extends SpaceObject {
     });
   }
 
-  createLabel(){
+  getMesh() {
+    return this.mesh;
+  }
+
+  createLabel() {
     let text = new CustomText(this.name).getText();
-    text.position.set(this.position.getX(),80,this.position.getZ());
+    text.position.set(this.position.getX(), 80, this.position.getZ());
     this.scene.addObjToScene(text);
   }
 
@@ -98,7 +102,7 @@ export class Planet extends SpaceObject {
     this.mesh.updateMatrix();
   }
 
-  updatePlanetPosition(){
-   //this.mesh.updateMatrix();
+  updatePlanetPosition() {
+    //this.mesh.updateMatrix();
   }
 }
