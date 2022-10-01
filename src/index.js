@@ -9,14 +9,14 @@ import { CustomControls } from "./class/threejs/custom-controlls";
 import { CustomRenderer } from "./class/threejs/custom-renderer";
 import { CustomScene } from "./class/threejs/custom-scene";
 import { earth } from "./data/planets/earth";
-import { sun } from "./data/planets/sun";
-import { mercury } from "./data/planets/mercury";
-import { venus } from "./data/planets/venus";
-import { mars } from "./data/planets/mars";
 import { jupiter } from "./data/planets/jupiter";
-import { saturn } from "./data/planets/saturn";
-import { uranus } from "./data/planets/uranus";
+import { mars } from "./data/planets/mars";
+import { mercury } from "./data/planets/mercury";
 import { neptune } from "./data/planets/neptun";
+import { PlanetsEnum } from "./data/planets/planets-enum";
+import { sun } from "./data/planets/sun";
+import { uranus } from "./data/planets/uranus";
+import { venus } from "./data/planets/venus";
 
 const gui = new dat.GUI();
 
@@ -26,34 +26,31 @@ const scene = new CustomScene();
 const size = 10000;
 const divisions = 1000;
 
-const gridHelper = new THREE.GridHelper( size, divisions );
+const gridHelper = new THREE.GridHelper(size, divisions);
 //scene.addObjToScene( gridHelper );
 
 sun.setupScene(scene);
-//sun._LoadFBXModel("http://localhost:8000/sun.fbx", 0.00001);
-sun._LoadFBXModel("http://localhost:8000/stacja_test2.fbx", 0.001);
+sun._LoadFBXModel(PlanetsEnum.sun, 0.001);
 mercury.setupScene(scene);
-mercury._LoadFBXModel("http://localhost:8000/mercury.fbx", 0.1);
+mercury._LoadFBXModel(PlanetsEnum.mercury, 0.1);
 venus.setupScene(scene);
-venus._LoadFBXModel("http://localhost:8000/venus.fbx", 0.1);
+venus._LoadFBXModel(PlanetsEnum.venus, 0.1);
 earth.setupScene(scene);
-earth._LoadFBXModel("http://localhost:8000/earth.fbx", 0.1);
+earth._LoadFBXModel(PlanetsEnum.earth, 0.1);
 mars.setupScene(scene);
-mars._LoadFBXModel("http://localhost:8000/mars.fbx", 0.1);
+mars._LoadFBXModel(PlanetsEnum.mars, 0.1);
 jupiter.setupScene(scene);
-jupiter._LoadFBXModel("http://localhost:8000/jupiter.fbx", 0.01);
-//saturn.setupScene(scene);
-//saturn._LoadFBXModel("http://localhost:8000/saturn.fbx", 0.0001);
+jupiter._LoadFBXModel(PlanetsEnum.jupiter, 0.01);
+// saturn.setupScene(scene);
+// saturn._LoadFBXModel(PlanetsEnum.saturn, 0.0001);
 uranus.setupScene(scene);
-uranus._LoadFBXModel("http://localhost:8000/uranus.fbx", 0.05);
+uranus._LoadFBXModel(PlanetsEnum.uranus, 0.05);
 neptune.setupScene(scene);
-neptune._LoadFBXModel("http://localhost:8000/neptune.fbx", 0.05);
-
-
+neptune._LoadFBXModel(PlanetsEnum.neptune, 0.05);
 
 var lights = [];
 lights[0] = new THREE.PointLight(0xffffff, 1, 0);
-lights[1] = new THREE.AmbientLight(0xffffff,0.1);
+lights[1] = new THREE.AmbientLight(0xffffff, 0.1);
 
 lights[0].position.set(0, 500, 0);
 
