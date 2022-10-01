@@ -7,6 +7,7 @@ import * as dat from "dat.gui";
 import { Planet } from "./class/structural/planet";
 import { CustomCamera } from "./class/threejs/custom-camera";
 import { CustomControls } from "./class/threejs/custom-controlls";
+import { CustomRenderer } from "./class/threejs/custom-renderer";
 import { CustomScene } from "./class/threejs/custom-scene";
 import { ThirdDimensionVector } from "./class/types/third-dimension-vector";
 const gui = new dat.GUI();
@@ -24,7 +25,7 @@ const scene = new CustomScene();
 /**
  * Object
  */
-const planet = new Planet(
+const earth = new Planet(
   1,
   "earth",
   new ThirdDimensionVector(10, 10, 10),
@@ -41,8 +42,27 @@ const planet = new Planet(
   10,
   new THREE.MeshBasicMaterial({ color: 0x15aacc })
 );
-const mesh = planet.getMesh();
-scene.addObjToScene(mesh);
+const mars = new Planet(
+  2,
+  "mars",
+  new ThirdDimensionVector(-10, -10, -10),
+  new ThirdDimensionVector(-10, -10, -10),
+  {
+    points: [
+      new ThirdDimensionVector(10, 10, 10),
+      new ThirdDimensionVector(20, 20, 20),
+    ],
+  },
+  ["www.google.com", "www.google.com"],
+  100,
+  10,
+  10,
+  new THREE.MeshBasicMaterial({ color: 0xffffff })
+);
+const earthMesh = earth.getMesh();
+const marsMesh = mars.getMesh();
+scene.addObjToScene(earthMesh, earth.getID, earth.getName());
+scene.addObjToScene(marsMesh, mars.getID, mars.getName());
 
 /**
  * Sizes
@@ -78,12 +98,10 @@ const controls = new CustomControls(camera.getCamera(), canvas);
 /**
  * Renderer
  */
-const renderer = new THREE.WebGLRenderer({
+const renderer = new CustomRenderer({
   canvas: canvas,
   antialias: true,
 });
-renderer.setSize(sizes.width, sizes.height);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 /**
  * Animate
@@ -91,10 +109,6 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 const clock = new THREE.Clock();
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
-
-  mesh.rotation.y += 0.01 * Math.sin(1);
-  mesh.rotation.y += 0.01 * Math.sin(1);
-  mesh.rotation.z += 0.01 * Math.sin(1);
 
   // Update controls
   controls.getControls().update();

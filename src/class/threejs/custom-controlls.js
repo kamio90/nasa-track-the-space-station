@@ -5,7 +5,7 @@ export class CustomControls {
     cameraObj,
     canvasElement,
     enableDamping = true,
-    autoRotate = true,
+    autoRotate = false,
     enablePan = false,
     dampingFactor = 0.05,
     maxDistance = 1000,
