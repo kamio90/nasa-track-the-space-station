@@ -1,6 +1,6 @@
 import { FontLoader, TextGeometry } from "three";
 
-//import * as THREE from 'three'
+import * as THREE from "three";
 export class CustomText {
   constructor(
     text = "Hello",
@@ -47,6 +47,6 @@ export class CustomText {
   }
 
   getText() {
-    return new THREE.Mesh(his.geometry);
+    return new THREE.Mesh(this.geometry);
   }
 }
