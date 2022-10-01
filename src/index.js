@@ -39,7 +39,7 @@ const planet = new Planet(
   100,
   10,
   10,
-  new THREE.MeshBasicMaterial( { color: 0x15aacc } )
+  new THREE.MeshBasicMaterial( { color: 0xffffff } )
   );
 const mesh = planet.getMesh();
 scene.add(mesh)
