@@ -18,6 +18,7 @@ import { saturn } from "./data/planets/saturn";
 import { sun } from "./data/planets/sun";
 import { uranus } from "./data/planets/uranus";
 import { venus } from "./data/planets/venus";
+import { ThirdDimensionVector } from "./class/types/third-dimension-vector";
 
 const gui = new dat.GUI();
 
@@ -101,7 +102,12 @@ const renderer = new CustomRenderer({
  * Animate
  */
 const clock = new THREE.Clock();
+let saturn_timer = 0;
 const tick = () => {
+
+  saturn_timer += 0.01;
+  saturn.position.set(20* Math.cos(saturn_timer),0,)
+
   // Update controls
   controls.getControls().update();
   //earth.movePlanet

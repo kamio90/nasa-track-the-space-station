@@ -4,8 +4,8 @@ import * as THREE from "three";
 export class CustomText {
   constructor(
     text = "Hello",
-    size = 80,
-    height = 5,
+    size = 100,
+    height = 50,
     curveSegments = 12,
     bevelEnabled = true,
     bevelThickness = 10,
@@ -29,7 +29,7 @@ export class CustomText {
 
   init() {
     this.loader = this.fontLoader.load(
-      "fonts/helvetiker_regular.typeface.json",
+      "http://localhost:8000/fonts/helvetiker_regular.typeface.json",
       (font) => {
         this.geometry = new TextGeometry(this.text, {
           font: font,

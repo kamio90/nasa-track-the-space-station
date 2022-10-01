@@ -3,6 +3,7 @@ import { ThirdDimensionVector } from "../types/third-dimension-vector";
 import { SpaceObject } from "./space-object";
 import * as THREE from "three";
 import { CustomText } from "../threejs/custom-text";
+import { Vector3 } from "three";
 
 export class Planet extends SpaceObject {
   constructor(
@@ -46,7 +47,10 @@ export class Planet extends SpaceObject {
   }
 
   createLabel(){
-    this.scene.addObjToScene(new CustomText(this.name).getText());
+    let text = new CustomText(this.name).getText();
+    console.log(text);
+    text.position.set(this.position.getX(),80,this.position.getZ());
+    this.scene.addObjToScene(text);
   }
 
   createOrbit(){
