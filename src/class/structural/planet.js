@@ -1,6 +1,7 @@
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 import { ThirdDimensionVector } from "../types/third-dimension-vector";
 import { SpaceObject } from "./space-object";
+import * as THREE from "three";
 
 export class Planet extends SpaceObject {
   constructor(
@@ -39,6 +40,15 @@ export class Planet extends SpaceObject {
       this.mesh = obj;
       this.scene.addObjToScene(this.mesh);
     });
+    this.createOrbit();
+  }
+
+  createOrbit(){
+    const geometry = new THREE.RingGeometry( this.position.getX(), this.position.getX() + 0.3, 40);
+    const material = new THREE.MeshBasicMaterial( { color: 0xffffff, side: THREE.DoubleSide } );
+    const mesh = new THREE.Mesh( geometry, material );
+    mesh.rotation.x = Math.PI / 2;
+    this.scene.addObjToScene( mesh );
   }
 
   movePlanet(vector) {
