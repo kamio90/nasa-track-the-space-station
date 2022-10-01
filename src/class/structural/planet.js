@@ -103,6 +103,6 @@ export class Planet extends SpaceObject {
   }
 
   updatePlanetPosition() {
-    //this.mesh.updateMatrix();
+    this.mesh.updateMatrix();
   }
 }

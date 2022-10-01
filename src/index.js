@@ -99,18 +99,79 @@ const renderer = new CustomRenderer({
  * Animate
  */
 const clock = new THREE.Clock();
+let mercury_timer = 0;
+let venus_timer = 0;
+let earth_timer = 0;
+let mars_timer = 0;
+let jupiter_timer = 0;
 let saturn_timer = 0;
-const tick = () => {
-  saturn_timer += 0.1;
+let uranus_timer = 0;
+let neptune_timer = 0;
 
-  saturn.setX(20 * Math.cos(saturn_timer));
-  saturn.setZ(20 * Math.sin(saturn_timer));
+const tick = () => {
+  mercury_timer += 0.01;
+  venus_timer += 0.01;
+  earth_timer += 0.01;
+  mars_timer += 0.01;
+  jupiter_timer += 0.01;
+  saturn_timer += 0.01;
+  uranus_timer += 0.01;
+  neptune_timer += 0.01;
+
+  if (mercury.mesh != undefined) {
+    mercury.mesh.position.x = 50 * Math.cos(mercury_timer);
+    mercury.mesh.position.z = 50 * Math.sin(mercury_timer);
+    mercury.updatePlanetPosition();
+  }
+
+  if (venus.mesh != undefined) {
+    venus.mesh.position.x = 100 * Math.cos(venus_timer);
+    venus.mesh.position.z = 100 * Math.sin(venus_timer);
+    venus.updatePlanetPosition();
+  }
+
+  if (earth.mesh != undefined) {
+    earth.mesh.position.x = 150 * Math.cos(earth_timer);
+    earth.mesh.position.z = 150 * Math.sin(earth_timer);
+    earth.updatePlanetPosition();
+  }
+
+  if (mars.mesh != undefined) {
+    mars.mesh.position.x = 200 * Math.cos(mars_timer);
+    mars.mesh.position.z = 200 * Math.sin(mars_timer);
+    mars.updatePlanetPosition();
+  }
+
+  if (jupiter.mesh != undefined) {
+    jupiter.mesh.position.x = 250 * Math.cos(jupiter_timer);
+    jupiter.mesh.position.z = 250 * Math.sin(jupiter_timer);
+    jupiter.updatePlanetPosition();
+  }
 
   if (saturn.mesh != undefined) {
-    console.log(saturn.mesh);
-    saturn.mesh.updateMatrix();
+    saturn.mesh.position.x = 300 * Math.cos(saturn_timer);
+    saturn.mesh.position.z = 300 * Math.sin(saturn_timer);
+    saturn.updatePlanetPosition();
   }
-  saturn.updatePlanetPosition();
+
+  if (uranus.mesh != undefined) {
+    uranus.mesh.position.x = 350 * Math.cos(uranus_timer);
+    uranus.mesh.position.z = 350 * Math.sin(uranus_timer);
+    uranus.updatePlanetPosition();
+  }
+
+  if (neptune.mesh != undefined) {
+    neptune.mesh.position.x = 400 * Math.cos(neptune_timer);
+    neptune.mesh.position.z = 400 * Math.sin(neptune_timer);
+    neptune.updatePlanetPosition();
+  } 
+
+
+
+
+
+
+
 
   // Update controls
   controls.getControls().update();
