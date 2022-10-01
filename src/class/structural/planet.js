@@ -2,6 +2,7 @@ import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 import { ThirdDimensionVector } from "../types/third-dimension-vector";
 import { SpaceObject } from "./space-object";
 import * as THREE from "three";
+import { CustomText } from "../threejs/custom-text";
 
 export class Planet extends SpaceObject {
   constructor(
@@ -41,6 +42,11 @@ export class Planet extends SpaceObject {
       this.scene.addObjToScene(this.mesh);
     });
     this.createOrbit();
+    this.createLabel();
+  }
+
+  createLabel(){
+    this.scene.addObjToScene(new CustomText(this.name).getText());
   }
 
   createOrbit(){
