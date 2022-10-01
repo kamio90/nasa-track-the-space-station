@@ -1,69 +1,95 @@
-import { SpaceObject } from "./space-object";
+import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
+import { ThirdDimensionVector } from "../types/third-dimension-vector";
 
-export class ISS extends SpaceObject {
-  constructor(id, name, wordPosition, wordRotation, wordPath, webLinks,
-    noradId, localTime, utc, latitude, longitude, speed, altitude) {
-    super(id, name, wordPosition, wordRotation, wordPath,webLinks);
-    this.noradId = noradId;
-    this.localTime = localTime;
-    this.utc = utc;
-    this.latitude = latitude;
-    this.longitude = longitude;
-    this.speed = speed;
-    this.altitude = altitude;
-  }
-  
-  //Setters
-  setNoradId(noradId) {
-    this.noradId = noradId;
+export class ISS {
+  constructor(
+    id = 1,
+    name = "ISS",
+    position = new ThirdDimensionVector(0, 0, 0)
+  ) {
+    this.id = id;
+    this.name = name;
+    this.position = position;
+    this.partsOfModel = [];
   }
 
-  setLocalTime(localTime) {
-    this.localTime = localTime;
+  loadPartOfModel(scene, url, scale, positionVector, nameOfPartModel) {
+    const fbxLoader = new FBXLoader();
+    fbxLoader.load(url, (obj) => {
+      obj.scale.multiplyScalar(scale);
+      obj.position.x = positionVector.getX();
+      obj.position.y = positionVector.getY();
+      obj.position.z = positionVector.getZ();
+      obj.updateMatrix();
+      this._createPartOfModelObject(
+        thi.partOfModel.length + 1,
+        nameOfPartModel,
+        positionVector,
+        obj,
+        obj.mesh.color
+      );
+      scene.addObjToScene(obj);
+    });
   }
 
-  setUTC(utc) {
-    this.utc = utc;
+  _createPartOfModelObject(id, name, position, mesh, color) {
+    const object = {
+      id: id,
+      name: name,
+      position: position,
+      mesh: mesh,
+      color: color,
+      baseColor: color,
+    };
+
+    this.partsOfModel.push(object);
   }
 
-  setLatitude(latitude) {
-    this.latitude = latitude;
+  _setColorOnPartOfModelByID(id, color) {
+    this.partsOfModel.forEach((part) => {
+      if (part.id == id) {
+        part.mesh.color = color;
+      }
+    });
   }
 
-  setSpeed(speed) {
-    this.speed = speed;
+  _setBaseColorOnPartOfModelByID(id) {
+    this.partsOfModel.forEach((part) => {
+      if (part.id == id) {
+        part.mesh.color = part.baseColor;
+      }
+    });
   }
 
-  setAltitude(altitude) {
-    this.altitude = altitude;
+  _hidePartOfModelByID(id) {
+    this.partsOfModel.forEach((part) => {
+      if (part.id == id) {
+        part.mesh.visible = hidden;
+      }
+    });
   }
 
-  //Getters
-  getNoradId() {
-    return this.noradId;
+  _hidePartOfModelByName(name) {
+    this.partsOfModel.forEach((part) => {
+      if (part.name == name) {
+        part.mesh.visible = hidden;
+      }
+    });
   }
 
-  getLocalTime() {
-    return this.localTime;
+  _showHiddenPartOfModelByID(id) {
+    this.partsOfModel.forEach((part) => {
+      if (part.id == id) {
+        part.mesh.visible = visible;
+      }
+    });
   }
 
-  getUTC() {
-    return this.utc;
-  }
-
-  getLatitude() {
-    return this.latitude;
-  }
-
-  getLongitude() {
-    return this.longitude;
-  }
-
-  getSpeed() {
-    return this.speed;
-  }
-
-  getAltitude() {
-    return this.altitude;
+  _showHiddenPartOfModelByName(name) {
+    this.partsOfModel.forEach((part) => {
+      if (part.name == name) {
+        part.mesh.visible = visible;
+      }
+    });
   }
 }
