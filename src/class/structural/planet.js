@@ -1,8 +1,8 @@
+import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
+import { CustomText } from "../threejs/custom-text";
 import { ThirdDimensionVector } from "../types/third-dimension-vector";
 import { SpaceObject } from "./space-object";
-import * as THREE from "three";
-import { CustomText } from "../threejs/custom-text";
 
 export class Planet extends SpaceObject {
   constructor(
@@ -16,6 +16,30 @@ export class Planet extends SpaceObject {
   ) {
     super(id, name, wordPosition, wordRotation, wordPath, webLinks);
     this.position = vector;
+  }
+
+  setX(x) {
+    this.position.setX(x);
+  }
+
+  setY(y) {
+    this.position.setY(y);
+  }
+
+  setZ(z) {
+    this.position.setZ(z);
+  }
+
+  getX() {
+    return this.position.getX();
+  }
+
+  getY() {
+    return this.position.getY();
+  }
+
+  getZ() {
+    return this.position.getZ();
   }
 
   //Initializations
@@ -45,16 +69,23 @@ export class Planet extends SpaceObject {
     this.createLabel();
   }
 
-  createLabel(){
+  createLabel() {
     this.scene.addObjToScene(new CustomText(this.name).getText());
   }
 
-  createOrbit(){
-    const geometry = new THREE.RingGeometry( this.position.getX(), this.position.getX() + 0.3, 40);
-    const material = new THREE.MeshBasicMaterial( { color: 0xffffff, side: THREE.DoubleSide } );
-    const mesh = new THREE.Mesh( geometry, material );
+  createOrbit() {
+    const geometry = new THREE.RingGeometry(
+      this.position.getX(),
+      this.position.getX() + 0.3,
+      40
+    );
+    const material = new THREE.MeshBasicMaterial({
+      color: 0xffffff,
+      side: THREE.DoubleSide,
+    });
+    const mesh = new THREE.Mesh(geometry, material);
     mesh.rotation.x = Math.PI / 2;
-    this.scene.addObjToScene( mesh );
+    this.scene.addObjToScene(mesh);
   }
 
   movePlanet(vector) {
