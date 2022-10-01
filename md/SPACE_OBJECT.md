@@ -1,0 +1,9 @@
+- class: SPACE_OBJECT
+  - class_fields:
+    - id: number
+    - name: string
+    - model: .GLTF (object)
+    - word_position: vec3 (object {x:number,y:number,z:number})
+    - word_rotation: vec3 (object {x:number,y:number,z:number})
+    - word_path: object{points: Array vec3(object {x:number,y:number,z:number}), local_rotation: vec3(object {x:number,y:number,z:number})}
+    - web_links: Array string

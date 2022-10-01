@@ -1,6 +1,6 @@
-import './style/main.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import './style/main.css'
 /**
  * GUI Controls
  */
@@ -94,8 +94,8 @@ const clock = new THREE.Clock()
 const tick = () => {
   const elapsedTime = clock.getElapsedTime()
 
-  //mesh.rotation.y += 0.01 * Math.sin(1)
-  //mesh.rotation.y += 0.01 * Math.sin(1)
+  mesh.rotation.y += 0.01 * Math.sin(1)
+  mesh.rotation.y += 0.01 * Math.sin(1)
   mesh.rotation.z += 0.01 * Math.sin(1)
 
   // Update controls
