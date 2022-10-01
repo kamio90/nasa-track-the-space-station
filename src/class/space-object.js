@@ -9,6 +9,35 @@ export class SpaceObject {
     this.webLinks = webLinks;
   }
 
+  //Setters
+  setID(id) {
+    this.id = id;
+  }
+
+  setName(name) {
+    this.name = name;
+  }
+
+  setModel(model) {
+    this.model = model;
+  }
+
+  setWordPosition(wordPosition) {
+    this.wordPosition = wordPosition;
+  }
+
+  setWordRotation(wordRotation) {
+    this.wordRotation = wordRotation;
+  }
+
+  setWordPath(wordPath) {
+    this.wordPath = wordPath;
+  }
+
+  setWebLinks(webLinks) {
+    this.webLinks = webLinks;
+  }
+
   //Getters
   getID() {
     return this.id;
