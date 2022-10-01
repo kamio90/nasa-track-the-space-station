@@ -38,15 +38,10 @@ const planet = new Planet(
   ],
   100,
   10,
-  10
+  10,
+  new THREE.MeshBasicMaterial( { color: 0x15aacc } )
   );
-const geometry = planet.getBufferGeometry();
-//const geometry = new THREE.IcosahedronGeometry(10, 1)
-const material = new THREE.MeshNormalMaterial()
-// Material Props.
-material.wireframe = true
-// Create Mesh & Add To Scene
-const mesh = new THREE.Mesh(geometry, material)
+const mesh = planet.getMesh();
 scene.add(mesh)
 
 /**

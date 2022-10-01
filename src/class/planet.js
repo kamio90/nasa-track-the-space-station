@@ -3,16 +3,28 @@ import { SpaceObject } from "./space-object";
 
 
 export class Planet extends SpaceObject {
-  constructor(id, name, wordPosition, wordRotation, wordPath, webLinks, width, height, radius) {
+  constructor(id, name, wordPosition, wordRotation, wordPath, webLinks, width, height, radius, material = null) {
     super(id, name, wordPosition, wordRotation, wordPath,webLinks);
     this.width = width;
     this.height = height;
     this.radius = radius;
-    this.bufferGeometry = this.createBufferGeometry();
+    this.bufferGeometry = this._createBufferGeometry();
+    this.material = this._createMaterial(material);
+    this.mesh = this._createMesh();
   }
   
   //Helpers
-  createBufferGeometry(){
+  _createMesh(){
+    return new THREE.Mesh(this.bufferGeometry, this.material);
+  }
+
+  _createMaterial(material) {
+    if(material == null)
+      return new THREE.MeshNormalMaterial();
+    return material;
+  }
+
+  _createBufferGeometry(){
     return new THREE.SphereBufferGeometry(this.radius,this.width,this.height);
   }
 
@@ -44,5 +56,14 @@ export class Planet extends SpaceObject {
 
   getBufferGeometry() {
     return this.bufferGeometry;
+  }
+
+  getMaterial() {
+    this.material.wireframe = true;
+    return this.material;
+  }
+
+  getMesh() {
+    return this.mesh;
   }
 }
