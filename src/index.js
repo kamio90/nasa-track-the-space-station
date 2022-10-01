@@ -61,7 +61,9 @@ const mars = new Planet(
   "https://solartextures.b-cdn.net/2k_jupiter.jpg"
 );
 
-earth._LoadFBXModel("../static/models/sphere.fbx");
+earth._LoadFBXModel(
+  "https://threejs.org/examples/models/fbx/Samba%20Dancing.fbx"
+);
 // scene.addObjToScene(earthMesh, earth.getID, earth.getName());
 // scene.addObjToScene(marsMesh, mars.getID, mars.getName());
 
