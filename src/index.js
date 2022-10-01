@@ -11,7 +11,6 @@ import { CustomRenderer } from "./class/threejs/custom-renderer";
 import { CustomScene } from "./class/threejs/custom-scene";
 import { ThirdDimensionVector } from "./class/types/third-dimension-vector";
 const gui = new dat.GUI();
-
 /**
  * Base
  */
@@ -40,7 +39,8 @@ const earth = new Planet(
   100,
   10,
   10,
-  new THREE.MeshBasicMaterial({ color: 0x15aacc })
+  scene,
+  "https://solartextures.b-cdn.net/2k_jupiter.jpg"
 );
 const mars = new Planet(
   2,
@@ -57,12 +57,27 @@ const mars = new Planet(
   100,
   10,
   10,
-  new THREE.MeshBasicMaterial({ color: 0xffffff })
+  scene,
+  "https://solartextures.b-cdn.net/2k_jupiter.jpg"
 );
-const earthMesh = earth.getMesh();
-const marsMesh = mars.getMesh();
-scene.addObjToScene(earthMesh, earth.getID, earth.getName());
-scene.addObjToScene(marsMesh, mars.getID, mars.getName());
+
+earth._LoadFBXModel("../static/models/sphere.fbx");
+// scene.addObjToScene(earthMesh, earth.getID, earth.getName());
+// scene.addObjToScene(marsMesh, mars.getID, mars.getName());
+
+var lights = [];
+lights[0] = new THREE.PointLight(0xffffff, 1, 0);
+lights[1] = new THREE.PointLight(0xffffff, 1, 0);
+lights[2] = new THREE.PointLight(0xffffff, 1, 0);
+
+lights[0].position.set(0, 200, 0);
+lights[1].position.set(100, 200, 100);
+lights[2].position.set(-100, -200, -100);
+
+scene.addObjToScene(lights[0]);
+scene.addObjToScene(lights[1]);
+scene.addObjToScene(lights[2]);
+console.log(scene);
 
 /**
  * Sizes
@@ -80,10 +95,6 @@ window.addEventListener("resize", () => {
   // Update camera
   camera.getCamera().aspect = sizes.width / sizes.height;
   camera.getCamera().updateProjectionMatrix();
-
-  // Update renderer
-  renderer.setSize(sizes.width, sizes.height);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
 /**

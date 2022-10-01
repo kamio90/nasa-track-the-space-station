@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as THREE from "three";
 
 export class CustomScene {
   constructor() {
@@ -7,11 +7,11 @@ export class CustomScene {
   }
 
   //Operations
-  addObjToScene(obj,id,name) {
+  addObjToScene(obj, id, name) {
     const newObject = {
       id: id,
-      name: name
-    }
+      name: name,
+    };
     this.objects.push(newObject);
     this.scene.add(obj);
   }
@@ -21,15 +21,15 @@ export class CustomScene {
     return this.scene;
   }
 
-  getAllObjects(){
+  getAllObjects() {
     return this.objects;
   }
 
   getOneObjectByID(id) {
-    return this.objects.filter(object => object.id == id);
+    return this.objects.filter((object) => object.id == id);
   }
 
   getOneObjectByName(name) {
-    return this.objects.filter(object => object.name == name);
+    return this.objects.filter((object) => object.name == name);
   }
 }
