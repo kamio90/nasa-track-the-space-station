@@ -80,6 +80,9 @@ export class Planet extends SpaceObject {
   }
 
   getMesh() {
+    this.mesh.position.x = this.wordPosition.x;
+    this.mesh.position.y = this.wordPosition.y;
+    this.mesh.position.z = this.wordPosition.z;
     return this.mesh;
   }
 }

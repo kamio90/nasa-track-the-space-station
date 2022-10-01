@@ -25,7 +25,7 @@ const scene = new CustomScene();
 /**
  * Object
  */
-const planet = new Planet(
+const earth = new Planet(
   1,
   "earth",
   new ThirdDimensionVector(10, 10, 10),
@@ -42,8 +42,27 @@ const planet = new Planet(
   10,
   new THREE.MeshBasicMaterial({ color: 0x15aacc })
 );
-const mesh = planet.getMesh();
-scene.addObjToScene(mesh);
+const mars = new Planet(
+  2,
+  "mars",
+  new ThirdDimensionVector(-10, -10, -10),
+  new ThirdDimensionVector(-10, -10, -10),
+  {
+    points: [
+      new ThirdDimensionVector(10, 10, 10),
+      new ThirdDimensionVector(20, 20, 20),
+    ],
+  },
+  ["www.google.com", "www.google.com"],
+  100,
+  10,
+  10,
+  new THREE.MeshBasicMaterial({ color: 0xffffff })
+);
+const earthMesh = earth.getMesh();
+const marsMesh = mars.getMesh();
+scene.addObjToScene(earthMesh, earth.getID, earth.getName());
+scene.addObjToScene(marsMesh, mars.getID, mars.getName());
 
 /**
  * Sizes
