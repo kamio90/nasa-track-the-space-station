@@ -7,7 +7,9 @@ mars - 227 935 537 km
 jowisz - 778 412 027 km
 saturn - 1 426 725 413 km
 uran - 2 870 972 220 km
-neptun - 4 498 252 km
+neptun - 4 498 252 900km
+
+1/10000 distance in model
 
 ISS od ziemi 403 - 408 km
 
