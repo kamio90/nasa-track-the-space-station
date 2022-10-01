@@ -64,14 +64,13 @@ export class Planet extends SpaceObject {
       obj.updateMatrix();
       this.mesh = obj;
       this.scene.addObjToScene(this.mesh);
+      this.createOrbit();
+      this.createLabel();
     });
-    this.createOrbit();
-    this.createLabel();
   }
 
   createLabel(){
     let text = new CustomText(this.name).getText();
-    console.log(text);
     text.position.set(this.position.getX(),80,this.position.getZ());
     this.scene.addObjToScene(text);
   }
@@ -86,9 +85,9 @@ export class Planet extends SpaceObject {
       color: 0xffffff,
       side: THREE.DoubleSide,
     });
-    const mesh = new THREE.Mesh(geometry, material);
-    mesh.rotation.x = Math.PI / 2;
-    this.scene.addObjToScene(mesh);
+    const mesh2 = new THREE.Mesh(geometry, material);
+    mesh2.rotation.x = Math.PI / 2;
+    this.scene.addObjToScene(mesh2);
   }
 
   movePlanet(vector) {
@@ -97,5 +96,9 @@ export class Planet extends SpaceObject {
     this.mesh.position.y = this.position.getY();
     this.mesh.position.z = this.position.getZ();
     this.mesh.updateMatrix();
+  }
+
+  updatePlanetPosition(){
+   //this.mesh.updateMatrix();
   }
 }

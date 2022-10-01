@@ -105,8 +105,12 @@ const clock = new THREE.Clock();
 let saturn_timer = 0;
 const tick = () => {
 
-  saturn_timer += 0.01;
-  saturn.position.set(20* Math.cos(saturn_timer),0,)
+  saturn_timer += 0.1;
+
+
+  saturn.setX( 20 * Math.cos(saturn_timer));
+  saturn.setZ( 20 * Math.sin(saturn_timer));
+  saturn.updatePlanetPosition();
 
   // Update controls
   controls.getControls().update();
