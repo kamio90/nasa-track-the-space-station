@@ -1,3 +1,5 @@
+import { FontLoader, TextGeometry } from "three";
+
 //import * as THREE from 'three'
 export class CustomText {
   constructor(
@@ -20,5 +22,31 @@ export class CustomText {
     this.bevelSize = bevelSize;
     this.bevelOffset = bevelOffset;
     this.bevelSegments = bevelSegments;
+    this.fontLoader = new FontLoader();
+
+    this.init();
+  }
+
+  init() {
+    this.loader = this.fontLoader.load(
+      "fonts/helvetiker_regular.typeface.json",
+      (font) => {
+        this.geometry = new TextGeometry(this.text, {
+          font: font,
+          size: this.size,
+          height: this.height,
+          curveSegments: this.curveSegments,
+          bevelEnabled: this.bevelEnabled,
+          bevelThickness: this.bevelThickness,
+          bevelSize: this.bevelSize,
+          bevelOffset: this.bevelOffset,
+          bevelSegments: this.bevelSegments,
+        });
+      }
+    );
+  }
+
+  getText() {
+    return this.geometry;
   }
 }
