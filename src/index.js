@@ -5,7 +5,7 @@ import './style/main.css'
  * GUI Controls
  */
 import * as dat from 'dat.gui'
-import { Planet } from './class/planet'
+import { Planet } from './class/structural/planet'
 import { ThirdDimensionVector } from './class/types/third-dimension-vector'
 const gui = new dat.GUI()
 
