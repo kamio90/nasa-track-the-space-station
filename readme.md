@@ -1,51 +1,42 @@
-# Three.js Template / Boilerplate
+# ISS LOOKOUT
 
-*Get started with Three.js to render 3d Web Experience*
+## Project
+Project was developed on hackaton "NASA Space Apps Challenge 2022".
+## Team
+- [Natalia](https://github.com/beladreens) - Graphic Designer
+- [Mikolaj](https://github.com/Monoloki) - Game Developer
+- [Kamil](https://github.com/kamio90) - Typescript Developer
+## Technology
+- [Three.js](https://threejs.org/)
+- Javascirpt
+- Python
+## Current Stage
+- Simulation of Milky Way
+- ISS moving path prediction
+- Orbital camera on ISS
+- Multiply time of simulation
+- Showcase information of selected parts of ISS
 
-![Image Title](https://github.com/mohnishlandge/webgl-assets/blob/main/Screenshot%20(159).png)
-
-[Youtube Setup Video](https://youtu.be/MmjZG-UX30g)
-
-[Demo](https://threejs-template.netlify.app/)
-
+## Future Plans
+- Wayback machine on ISS and planets
+  - position of objects
+  - live streams from ISS
+  - ISS model partial builder
+- Creating more galactic than Milky Way
+- Adding custom galactic and simulate it 
+- Full configuration and open solution for everyone
+- Interactive cases study on building ISS
 
 ## Installation
+- [ ] Pre requirements
+  - node.js
+  - npm
+  - python
 
-Install dependencies (only for first time) :
+- [ ] `git clone` repository
+- [ ] `npm install` dependencies
+- [ ] run python script in `python_server` folder
+- [ ] `npm run dev` to run local dev server 
 
-```
-yarn
-```
-
-Compile the code for development and start a local server:
-
-```
-yarn dev
-```
-
-Local Server will open on:
-
-```
-http://localhost:8080/
-```
-
-Create the build:
-
-```
-yarn build
-```
-
-## Credits
-
-- [Webpack THREE.js Template](https://github.com/brunosimon/webpack-three-js-template)
-
-## Misc
-
-Follow *@iviixio*: [Twitter](https://twitter.com/iviixio), [Instagram](https://www.instagram.com/iviixio/)
-
-Youtube Video: [Twitter](https://youtu.be/MmjZG-UX30g)
-
-## License
-[MIT](LICENSE)
-
-Made with :blue_heart: by [Mohnish Landge](http://mohnishlandge.me)
+## Honorable Mention
+Project based on template made with :blue_heart: by [Mohnish Landge](http://mohnishlandge.me) on [MIT](LICENSE)
