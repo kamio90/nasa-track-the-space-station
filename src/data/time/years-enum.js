@@ -1,3 +1,4 @@
+/* Exporting a constant called YearsEnum that is an object with keys and values that are the same. */
 export const YearsEnum = {
   1998: 1998,
   1999: 1999,

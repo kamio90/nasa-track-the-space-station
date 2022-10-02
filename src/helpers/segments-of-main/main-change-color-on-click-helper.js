@@ -3,12 +3,23 @@ const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 let tmp_Camera;
 let tmp_Scene;
+/**
+ * It adds a click event listener to the renderer's domElement
+ * @param renderer - The renderer object that you created in the previous step.
+ * @param camera - The camera that is being used to render the scene.
+ * @param scene - The scene that contains the objects you want to change the color of.
+ */
 export const MainChangeColorOnClickHelper = (renderer, camera, scene) => {
   tmp_Camera = camera;
   tmp_Scene = scene;
   renderer.getRenderer().domElement.addEventListener("click", onClick, false);
 };
 
+/**
+ * When the user clicks on the screen, we get the mouse coordinates, convert them to 3D coordinates,
+ * and then check if the mouse is over any of the objects in the scene. If it is, we change the color
+ * of the object
+ */
 const onClick = () => {
   event.preventDefault();
 

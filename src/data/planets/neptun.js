@@ -1,6 +1,7 @@
 import { Planet } from "../../class/structural/planet";
 import { ThirdDimensionVector } from "../../class/types/third-dimension-vector";
 
+/* Creating a new instance of the Planet class. */
 export const neptune = new Planet(
   9,
   "neptune",
@@ -13,5 +14,5 @@ export const neptune = new Planet(
     ],
   },
   ["www.google.com", "www.google.com"],
-  new ThirdDimensionVector(400,0,0),
+  new ThirdDimensionVector(400, 0, 0)
 );

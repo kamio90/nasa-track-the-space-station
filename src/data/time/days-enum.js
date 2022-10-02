@@ -1,3 +1,4 @@
+/* Creating an object with the keys being the numbers 1-31 and the values being the numbers 1-31. */
 export const DaysEnum = {
   1: 1,
   2: 2,

@@ -1,3 +1,5 @@
+/* Creating a constant called MonthsEnum that is an object with the keys of the months and the values
+of the months. */
 export const MonthsEnum = {
   January: 1,
   February: 2,
