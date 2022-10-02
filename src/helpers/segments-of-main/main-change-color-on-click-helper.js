@@ -50,6 +50,80 @@ const onClick = () => {
       selected = intersects[0];
       console.log(selected);
       CreateISSPartDivHelper(selected.object.name);
+      switch (selected.object.name) {
+        case 'arrayport1':
+          CreateISSPartDivHelper('');
+          break;
+        case 'arrayport2':
+          CreateISSPartDivHelper('');
+          break;
+        case 'arraystar1':
+          CreateISSPartDivHelper('');
+          break;
+        case 'arraystar2':
+          CreateISSPartDivHelper('');
+          break;
+        case 'columbus':
+          CreateISSPartDivHelper('');
+          break;
+        case 'destiny_USA':
+          CreateISSPartDivHelper('');
+          break;
+        case 'ELC':
+          CreateISSPartDivHelper('');
+          break;
+        case 'ELC2':
+          CreateISSPartDivHelper('');
+          break;
+        case 'frame':
+          CreateISSPartDivHelper('');
+          break;
+        case 'harmony_mod':
+          CreateISSPartDivHelper('');
+          break;
+        case 'IDA-2':
+          CreateISSPartDivHelper('');
+          break;
+        case 'idkman':
+          CreateISSPartDivHelper('');
+          break;
+        case 'isscomine_idk':
+          CreateISSPartDivHelper('');
+          break;
+        case 'jem_elm_ps':
+          CreateISSPartDivHelper('');
+          break;
+        case 'JEME':
+          CreateISSPartDivHelper('');
+          break;
+        case 'Kibo_JEM':
+          CreateISSPartDivHelper('');
+          break;
+        case 'Nauka_LAB':
+          CreateISSPartDivHelper('');
+          break;
+        case 'P1truss_segment':
+          CreateISSPartDivHelper('');
+          break;
+        case 'PMA-2':
+          CreateISSPartDivHelper('');
+          break;
+        case 'S1truss_segment':
+          CreateISSPartDivHelper('');
+          break;
+        case 'unity_node':
+          CreateISSPartDivHelper('');
+          break;
+        case 'unity_node1':
+          CreateISSPartDivHelper('');
+          break;
+        case 'zarya':
+          CreateISSPartDivHelper('');
+          break;
+        case 'zvezda':
+          CreateISSPartDivHelper('');
+          break;
+      }
     }
   }
 };
