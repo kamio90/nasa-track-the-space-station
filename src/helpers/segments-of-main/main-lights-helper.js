@@ -1,4 +1,8 @@
 import * as THREE from "three";
+/**
+ * It creates a point light and an ambient light, and adds them to the scene
+ * @param scene - The scene object that the lights will be added to.
+ */
 export const MainLightsHelper = (scene) => {
   const lights = [];
   lights[0] = new THREE.PointLight(0xffffff, 1, 0);

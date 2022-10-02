@@ -9,6 +9,10 @@ import { sun } from "../../data/planets/sun";
 import { uranus } from "../../data/planets/uranus";
 import { venus } from "../../data/planets/venus";
 
+/**
+ * It sets up the scene and loads the models for all the planets
+ * @param scene - The scene that the planet will be added to.
+ */
 export const MainPlanetsHelper = (scene) => {
   sun.setupScene(scene);
   sun._LoadFBXModel(PlanetsEnum.sun, 0.00001);

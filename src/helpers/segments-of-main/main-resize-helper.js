@@ -1,3 +1,8 @@
+/**
+ * It adds a resize event listener to the window, and when the window is resized, it updates the
+ * camera's aspect ratio
+ * @param camera - The camera object that you want to resize.
+ */
 export const MainResizeHelper = (camera) => {
   const sizes = {
     width: window.innerWidth,

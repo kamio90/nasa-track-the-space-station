@@ -1,6 +1,9 @@
 import { MonthsEnum } from "../../data/time/months-enum";
 import { YearsEnum } from "../../data/time/years-enum";
 import { CreateDivHelper } from "./create-div-helper";
+/**
+ * It creates a button that when clicked, shows a navigation bar
+ */
 export const MainUIHelper = () => {
   const btn = document.querySelector(".left-nav-bar-btn-menu");
   btn.addEventListener("click", () => {
