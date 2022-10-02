@@ -4,7 +4,7 @@ export class CustomCamera {
   constructor(
     fov = 75,
     aspect = 0,
-    near = 0.001,
+    near = 0.0001,
     far = 50000000,
     positionX = 1,
     positionY = 1,
@@ -31,6 +31,12 @@ export class CustomCamera {
     this.camera.position.x = this.positionX;
     this.camera.position.y = this.positionY;
     this.camera.position.z = this.positionZ;
+  }
+
+  setCameraLookAt(x, y, z) {
+    this.camera.position.x = x;
+    this.camera.position.y = y;
+    this.camera.position.z = z;
   }
 
   //Getters

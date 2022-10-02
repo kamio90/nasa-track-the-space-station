@@ -1,5 +1,9 @@
-import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
-import { ThirdDimensionVector } from "../types/third-dimension-vector";
+import {
+  FBXLoader
+} from "three/examples/jsm/loaders/FBXLoader";
+import {
+  ThirdDimensionVector
+} from "../types/third-dimension-vector";
 
 export class ISS {
   constructor(
@@ -22,15 +26,15 @@ export class ISS {
       obj.position.z = positionVector.getZ();
       obj.updateMatrix();
       this._createPartOfModelObject(
-            this.partsOfModel.length + 1,
-            nameOfPartModel,
-            positionVector,
-            obj,
-          );
+        this.partsOfModel.length + 1,
+        nameOfPartModel,
+        positionVector,
+        obj,
+      );
       scene.addObjToScene(obj);
     });
-       
-      
+
+
     //  fbxLoader.load(url, (obj) => {
     //   await obj.scale.multiplyScalar(scale);
     //   obj.position.x = positionVector.getX();
@@ -56,12 +60,15 @@ export class ISS {
       position: position,
       mesh: mesh,
     };
-
     this.partsOfModel.push(object);
   }
 
-  move(vector3){
-    this.partsOfModel.map(part => part.mesh.position += vector3);
+  move(vector3) {
+    this.partsOfModel.map(part => {
+      part.mesh.position.x = vector3.x;
+      part.mesh.position.y = vector3.y;
+      part.mesh.position.z = vector3.z;
+    });
   }
 
   _setColorOnPartOfModelByID(id, color) {
