@@ -73,6 +73,15 @@ html
     overflow: scroll;
 }
 
+.show-case-information {
+    font-size: 30px;
+    color: black;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 10%;
+}
+
 .nav-column-item {
     flex-basis: 100%;
     color: white;
