@@ -1,7 +1,7 @@
 # ISS LOOKOUT
 
 ## Project
-Project was developed on hackaton "NASA Space Apps Challenge 2022".
+Project was developed on hackaton "NASA Space Apps Challenge 2022". For this reason it is better not to look at the commit history, because programming 48h without sleep is hard in the code, but calmly as it says "I will refactor it later".
 ## Team
 - [Natalia](https://github.com/beladreens) - Graphic Designer
 - [Mikolaj](https://github.com/Monoloki) - Game Developer
