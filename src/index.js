@@ -69,7 +69,7 @@ scene.addObjToScene(lights[1]);
 var iss = new ISS();
 
 
-iss.loadPartOfModel(scene,'http://localhost:8000/station/arrayport1.fbx',0.1,new ThirdDimensionVector(0,100,0),'arrayport1');
+ iss.loadPartOfModel(scene,'http://localhost:8000/station/arrayport1.fbx',0.1,new ThirdDimensionVector(0,100,0),'arrayport1');
 iss.loadPartOfModel(scene,'http://localhost:8000/station/arrayport2.fbx',0.1,new ThirdDimensionVector(0,100,0),'arrayport2');
 iss.loadPartOfModel(scene,'http://localhost:8000/station/arraystar1.fbx',0.1,new ThirdDimensionVector(0,100,0),'arraystar1');
 iss.loadPartOfModel(scene,'http://localhost:8000/station/arraystar2.fbx',0.1,new ThirdDimensionVector(0,100,0),'arraystar2');
@@ -93,7 +93,7 @@ iss.loadPartOfModel(scene,'http://localhost:8000/station/unity_node.fbx',0.1,new
 iss.loadPartOfModel(scene,'http://localhost:8000/station/unity_node1.fbx',0.1,new ThirdDimensionVector(0,100,0),'unity_node1');
 iss.loadPartOfModel(scene,'http://localhost:8000/station/zarya_chyba.fbx',0.1,new ThirdDimensionVector(0,100,0),'zarya');
 iss.loadPartOfModel(scene,'http://localhost:8000/station/zvezda.fbx',0.1,new ThirdDimensionVector(0,100,0),'zvezda');
-
+// iss.loadPartOfModel(scene,'http://localhost:8000/station/stacja_all.fbx',0.1,new ThirdDimensionVector(100,100,0),'stacja');
 
 
 /**
