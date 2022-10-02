@@ -1,16 +1,42 @@
-import { CustomCamera } from "./class/threejs/custom-camera";
-import { CustomControls } from "./class/threejs/custom-controlls";
-import { CustomRenderer } from "./class/threejs/custom-renderer";
-import { CustomScene } from "./class/threejs/custom-scene";
-import { MainChangeColorOnClickHelper } from "./helpers/segments-of-main/main-change-color-on-click-helper";
-import { MainGridHelper } from "./helpers/segments-of-main/main-grid-helper";
-import { MainISSHelper } from "./helpers/segments-of-main/main-iss-helper";
-import { MainISSMoveHelper } from "./helpers/segments-of-main/main-iss-move-helper";
-import { MainLightsHelper } from "./helpers/segments-of-main/main-lights-helper";
-import { MainPlanetsHelper } from "./helpers/segments-of-main/main-planets-helper";
-import { MainPlanetsMoveHelper } from "./helpers/segments-of-main/main-planets-move-helper";
-import { MainResizeHelper } from "./helpers/segments-of-main/main-resize-helper";
-import { MainUIHelper } from "./helpers/UI/main-ui-helper";
+import {
+  CustomCamera
+} from "./class/threejs/custom-camera";
+import {
+  CustomControls
+} from "./class/threejs/custom-controlls";
+import {
+  CustomRenderer
+} from "./class/threejs/custom-renderer";
+import {
+  CustomScene
+} from "./class/threejs/custom-scene";
+import {
+  MainChangeColorOnClickHelper
+} from "./helpers/segments-of-main/main-change-color-on-click-helper";
+import {
+  MainGridHelper
+} from "./helpers/segments-of-main/main-grid-helper";
+import {
+  MainISSHelper
+} from "./helpers/segments-of-main/main-iss-helper";
+import {
+  MainISSMoveHelper
+} from "./helpers/segments-of-main/main-iss-move-helper";
+import {
+  MainLightsHelper
+} from "./helpers/segments-of-main/main-lights-helper";
+import {
+  MainPlanetsHelper
+} from "./helpers/segments-of-main/main-planets-helper";
+import {
+  MainPlanetsMoveHelper
+} from "./helpers/segments-of-main/main-planets-move-helper";
+import {
+  MainResizeHelper
+} from "./helpers/segments-of-main/main-resize-helper";
+import {
+  MainUIHelper
+} from "./helpers/UI/main-ui-helper";
 import "./style/main.css";
 
 //Global Variables
@@ -83,7 +109,7 @@ const tick = () => {
   // Update controls
   controls.getControls().update();
   // Clicker Color change
-  MainChangeColorOnClickHelper(renderer, camera);
+  MainChangeColorOnClickHelper(renderer, camera, scene);
   // Render
   renderer.render(scene.getScene(), camera.getCamera());
   // Call tick again on the next frame

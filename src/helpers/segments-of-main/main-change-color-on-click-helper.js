@@ -3,6 +3,7 @@ const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 let tmp_Camera;
 let tmp_Scene;
+let selected;
 /**
  * It adds a click event listener to the renderer's domElement
  * @param renderer - The renderer object that you created in the previous step.
@@ -28,11 +29,20 @@ const onClick = () => {
 
   raycaster.setFromCamera(mouse, tmp_Camera.getCamera());
 
-  var intersects = raycaster.intersectObject(tmp_Scene, true);
+  var intersects = raycaster.intersectObject(tmp_Scene.getScene(), true);
+
+  if (selected != undefined) {
+    selected.object.material.map(color => {
+      color.color = new THREE.Color(0.45, 0.45, 0.45);
+    });
+  }
 
   if (intersects.length > 0) {
-    var object = intersects[0].object;
-
-    object.material.color.set(Math.random() * 0xffffff);
+    if (intersects[0].material == undefined || intersects[0].material == null) {
+      intersects[0].object.material.map(color => {
+        color.color = new THREE.Color(90, 252, 3);
+      });
+      selected = intersects[0];
+    }
   }
 };
