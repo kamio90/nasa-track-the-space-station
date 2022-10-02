@@ -32,8 +32,8 @@ menuBtn.addEventListener("click", () => {
 });
 
 //api call
-// FetchData();
-// setInterval(FetchData, 30000);
+// // FetchData();
+// // setInterval(FetchData, 30000);
 
 const canvas = document.querySelector("canvas.webgl");
 const scene = new CustomScene();
@@ -75,6 +75,7 @@ scene.addObjToScene(lights[1]);
 
 var iss = new ISS();
 
+<<<<<<< HEAD
 iss.loadPartOfModel(
   scene,
   "http://localhost:8000/station/zvezda.fbx",
@@ -243,6 +244,35 @@ iss.loadPartOfModel(
   new ThirdDimensionVector(0, 100, 0),
   "zarya"
 );
+=======
+
+ iss.loadPartOfModel(scene,'http://localhost:8000/station/arrayport1.fbx',0.1,new ThirdDimensionVector(0,100,0),'arrayport1');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/arrayport2.fbx',0.1,new ThirdDimensionVector(0,100,0),'arrayport2');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/arraystar1.fbx',0.1,new ThirdDimensionVector(0,100,0),'arraystar1');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/arraystar2.fbx',0.1,new ThirdDimensionVector(0,100,0),'arraystar2');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/columbus.fbx',0.1,new ThirdDimensionVector(0,100,0),'columbus');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/destiny.fbx',0.1,new ThirdDimensionVector(0,100,0),'destiny_USA');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/ELC.fbx',0.1,new ThirdDimensionVector(0,100,0),'ELC');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/ELC2.fbx',0.1,new ThirdDimensionVector(0,100,0),'ELC2');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/frame.fbx',0.1,new ThirdDimensionVector(0,100,0),'frame');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/harmony.fbx',0.1,new ThirdDimensionVector(0,100,0),'harmony_mod');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/IDA-2.fbx',0.1,new ThirdDimensionVector(0,100,0),'IDA-2');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/idkman.fbx',0.1,new ThirdDimensionVector(0,100,0),'idkman');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/isscombine.fbx',0.1,new ThirdDimensionVector(0,100,0),'isscomine_idk');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/jemELM-ps.fbx',0.1,new ThirdDimensionVector(0,100,0),'jem_elm_ps');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/jemRMS.fbx',0.1,new ThirdDimensionVector(0,100,0),'JEME');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/KiboJEM.fbx',0.1,new ThirdDimensionVector(0,100,0),'Kibo_JEM');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/NaukaLAB.fbx',0.1,new ThirdDimensionVector(0,100,0),'Nauka_LAB');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/p1truss.fbx',0.1,new ThirdDimensionVector(0,100,0),'P1truss_segment');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/PMA-2.fbx',0.1,new ThirdDimensionVector(0,100,0),'PMA-2');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/s1truss.fbx',0.1,new ThirdDimensionVector(0,100,0),'S1truss_segment');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/unity_node.fbx',0.1,new ThirdDimensionVector(0,100,0),'unity_node');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/unitynode1.fbx',0.1,new ThirdDimensionVector(0,100,0),'unity_node1');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/zarya_chyba.fbx',0.1,new ThirdDimensionVector(0,100,0),'zarya');
+iss.loadPartOfModel(scene,'http://localhost:8000/station/zvezda.fbx',0.1,new ThirdDimensionVector(0,100,0),'zvezda');
+// iss.loadPartOfModel(scene,'http://localhost:8000/station/stacja_all.fbx',0.1,new ThirdDimensionVector(100,100,0),'stacja');
+
+>>>>>>> 09cd855c689c73d7536756fe0a82ad1dd8858cd3
 
 /**
  * Sizes

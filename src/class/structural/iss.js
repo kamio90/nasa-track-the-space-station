@@ -13,23 +13,34 @@ export class ISS {
     this.partsOfModel = [];
   }
 
-  loadPartOfModel(scene, url, scale, positionVector, nameOfPartModel) {
+  async loadPartOfModel(scene, url, scale, positionVector, nameOfPartModel) {
     const fbxLoader = new FBXLoader();
-    fbxLoader.load(url, (obj) => {
+    const obj = await fbxLoader.loadAsync(url).then(obj => {
       obj.scale.multiplyScalar(scale);
       obj.position.x = positionVector.getX();
       obj.position.y = positionVector.getY();
       obj.position.z = positionVector.getZ();
       obj.updateMatrix();
-      // this._createPartOfModelObject(
-      //   this.partOfModel.length + 1,
-      //   nameOfPartModel,
-      //   positionVector,
-      //   obj,
-      //   obj.mesh.color
-      // );
       scene.addObjToScene(obj);
     });
+       
+      
+    //  fbxLoader.load(url, (obj) => {
+    //   await obj.scale.multiplyScalar(scale);
+    //   obj.position.x = positionVector.getX();
+    //   obj.position.y = positionVector.getY();
+    //   obj.position.z = positionVector.getZ();
+    //   obj.updateMatrix();
+    //   // this._createPartOfModelObject(
+    //   //   this.partOfModel.length + 1,
+    //   //   nameOfPartModel,
+    //   //   positionVector,
+    //   //   obj,
+    //   //   obj.mesh.color
+    //   // );
+    //   console.log(nameOfPartModel);
+    //   scene.addObjToScene(obj);
+    // });
   }
 
   _createPartOfModelObject(id, name, position, mesh, color) {
