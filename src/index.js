@@ -4,59 +4,49 @@ import "./style/main.css";
  * GUI Controls
  */
 import * as dat from "dat.gui";
-import {
-  FetchData
-} from "./api/fetch-data";
-import {
-  CustomCamera
-} from "./class/threejs/custom-camera";
-import {
-  CustomControls
-} from "./class/threejs/custom-controlls";
-import {
-  CustomRenderer
-} from "./class/threejs/custom-renderer";
-import {
-  CustomScene
-} from "./class/threejs/custom-scene";
-import {
-  earth
-} from "./data/planets/earth";
-import {
-  jupiter
-} from "./data/planets/jupiter";
-import {
-  mars
-} from "./data/planets/mars";
-import {
-  mercury
-} from "./data/planets/mercury";
-import {
-  neptune
-} from "./data/planets/neptun";
-import {
-  PlanetsEnum
-} from "./data/planets/planets-enum";
-import {
-  saturn
-} from "./data/planets/saturn";
-import {
-  sun
-} from "./data/planets/sun";
-import {
-  uranus
-} from "./data/planets/uranus";
-import {
-  venus
-} from "./data/planets/venus";
-import {
-  ISS
-} from "./class/structural/iss";
-import {
-  ThirdDimensionVector
-} from "./class/types/third-dimension-vector";
+import { ISS } from "./class/structural/iss";
+import { CustomCamera } from "./class/threejs/custom-camera";
+import { CustomControls } from "./class/threejs/custom-controlls";
+import { CustomRenderer } from "./class/threejs/custom-renderer";
+import { CustomScene } from "./class/threejs/custom-scene";
+import { ThirdDimensionVector } from "./class/types/third-dimension-vector";
+import { earth } from "./data/planets/earth";
+import { jupiter } from "./data/planets/jupiter";
+import { mars } from "./data/planets/mars";
+import { mercury } from "./data/planets/mercury";
+import { neptune } from "./data/planets/neptun";
+import { PlanetsEnum } from "./data/planets/planets-enum";
+import { saturn } from "./data/planets/saturn";
+import { sun } from "./data/planets/sun";
+import { uranus } from "./data/planets/uranus";
+import { venus } from "./data/planets/venus";
+import { MonthsEnum } from "./data/time/months-enum";
+import { YearsEnum } from "./data/time/years-enum";
+import { CreateDivHelper } from "./helpers/UI/create-div-helper";
 
 const gui = new dat.GUI();
+
+//FRONT - UI
+const btn = document.querySelector(".left-nav-bar-btn-menu");
+btn.addEventListener("click", () => {
+  const nav = document.querySelector(".left-nav-bar-container");
+  btn.classList.toggle("show");
+  nav.classList.toggle("show");
+});
+const arrayOfPartsOfYear = [];
+for (const property in YearsEnum) {
+  arrayOfPartsOfYear.push(CreateDivHelper(YearsEnum[property]));
+  document.querySelector(".year-holder").innerHTML = CreateDivHelper(
+    YearsEnum[property]
+  );
+}
+document.querySelector(".year-holder").innerHTML = arrayOfPartsOfYear.join("");
+const arrayOfPartsOfMonths = [];
+for (const property in MonthsEnum) {
+  arrayOfPartsOfMonths.push(CreateDivHelper(property));
+}
+document.querySelector(".month-holder").innerHTML =
+  arrayOfPartsOfMonths.join("");
 
 //api call
 // FetchData();
@@ -323,8 +313,6 @@ let uranus_timer = 0;
 let neptune_timer = 0;
 let iss_timer = 0;
 
-
-
 controls.getControls().update();
 
 const tick = () => {
@@ -338,13 +326,20 @@ const tick = () => {
   neptune_timer += 0.001;
   iss_timer += 0.0001;
 
-
   if (iss.partsOfModel.length != 0) {
-    controls.getControls().target = new THREE.Vector3(iss.partsOfModel[0].mesh.position.x,
+    controls.getControls().target = new THREE.Vector3(
+      iss.partsOfModel[0].mesh.position.x,
       iss.partsOfModel[0].mesh.position.y,
-      iss.partsOfModel[0].mesh.position.z);
+      iss.partsOfModel[0].mesh.position.z
+    );
 
-    iss.move(new THREE.Vector3(earth.mesh.position.x + 20 * Math.cos(iss_timer), 0, earth.mesh.position.z + 20 * Math.sin(iss_timer)));
+    iss.move(
+      new THREE.Vector3(
+        earth.mesh.position.x + 20 * Math.cos(iss_timer),
+        0,
+        earth.mesh.position.z + 20 * Math.sin(iss_timer)
+      )
+    );
 
     // camera.getCamera().position.setLength(camera.getFar() - camera.getNear());
   }
