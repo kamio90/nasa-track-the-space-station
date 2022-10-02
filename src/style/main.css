@@ -2,6 +2,7 @@
 {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body,
@@ -10,12 +11,96 @@ html
     overflow: hidden;
 }
 
-.webgl
-{
+.webgl{
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    z-index: -1;
+    width: 70%;
+    height: 70%;
     background: #000000;
+}
+
+.left-panel-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 24%;
+    height: 100%;
+    background-color: white;
+}
+
+.left-blue-panel-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 5%;
+    height: 100%;
+    background-color: lightblue;
+}
+
+.left-nav-bar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 20%;
+    height: 100%;
+    background-color: blue;
+    transform: translateX(-100%);
+    transition: all .5s linear;
+}
+
+.left-nav-bar-container.show {
+    transform: translateX(0);
+    transition: all .5s linear;
+}
+
+.left-nav-bar-btn-menu {
+    position: fixed;
+    top: 10%;
+    left: 0;
+    z-index: 2;
+    width: 5%;
+    height: 5%;
+    background-color: blue;
+    transform: translateX(0);
+    transition: all .5s linear;
+}
+
+.left-nav-bar-btn-menu.show {
+    transform: translateX(400%);
+    transition: all .5s linear;
+}
+
+.top-panel-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 20%;
+    background-color: white;
+}
+
+.right-panel-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 3%;
+    height: 100%;
+    background-color: white;
+}
+
+.down-panel-container {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    height: 5%;
+    background-color: white;
 }
