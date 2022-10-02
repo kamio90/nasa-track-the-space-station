@@ -1,3 +1,4 @@
+import * as THREE from "three";
 import { CustomCamera } from "./class/threejs/custom-camera";
 import { CustomControls } from "./class/threejs/custom-controlls";
 import { CustomRenderer } from "./class/threejs/custom-renderer";
@@ -13,7 +14,6 @@ import { MainPlanetsMoveHelper } from "./helpers/segments-of-main/main-planets-m
 import { MainResizeHelper } from "./helpers/segments-of-main/main-resize-helper";
 import { MainUIHelper } from "./helpers/UI/main-ui-helper";
 import "./style/main.css";
-import * as THREE from 'three';
 
 //Global Variables
 const canvas = document.querySelector("canvas.webgl");
@@ -43,19 +43,19 @@ scene.addObjToScene(camera.getCamera());
 
 var skyGeo = new THREE.SphereGeometry(100000, 25, 25);
 var loader = new THREE.TextureLoader(),
-  texture = loader.load("http://localhost:8000/texture/RandomizedSkymap.t4_04096x02048.jpg");
+  texture = loader.load(
+    "http://localhost:8000/texture/RandomizedSkymap.t4_04096x02048.jpg"
+  );
 var material = new THREE.MeshPhongMaterial({
   map: texture,
 });
 var sky = new THREE.Mesh(skyGeo, material);
 sky.material.side = THREE.BackSide;
-scene.addObjToScene(sky);
-
+// scene.addObjToScene(sky);
 
 //api call
 // FetchData();
 // setInterval(FetchData, 30000);
-
 
 // Timers For Planets
 let mercury_timer = 0;
