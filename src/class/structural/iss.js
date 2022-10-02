@@ -21,13 +21,13 @@ export class ISS {
       obj.position.y = positionVector.getY();
       obj.position.z = positionVector.getZ();
       obj.updateMatrix();
-      this._createPartOfModelObject(
-        thi.partOfModel.length + 1,
-        nameOfPartModel,
-        positionVector,
-        obj,
-        obj.mesh.color
-      );
+      // this._createPartOfModelObject(
+      //   this.partOfModel.length + 1,
+      //   nameOfPartModel,
+      //   positionVector,
+      //   obj,
+      //   obj.mesh.color
+      // );
       scene.addObjToScene(obj);
     });
   }
@@ -43,6 +43,10 @@ export class ISS {
     };
 
     this.partsOfModel.push(object);
+  }
+
+  move(vector3){
+    this.partsOfModel.map(part => part.mesh.position += vector3);
   }
 
   _setColorOnPartOfModelByID(id, color) {
