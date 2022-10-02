@@ -1,287 +1,54 @@
 import * as THREE from "three";
-import "./style/main.css";
-/**
- * GUI Controls
- */
-import * as dat from "dat.gui";
-import { ISS } from "./class/structural/iss";
 import { CustomCamera } from "./class/threejs/custom-camera";
 import { CustomControls } from "./class/threejs/custom-controlls";
 import { CustomRenderer } from "./class/threejs/custom-renderer";
 import { CustomScene } from "./class/threejs/custom-scene";
-import { ThirdDimensionVector } from "./class/types/third-dimension-vector";
 import { earth } from "./data/planets/earth";
 import { jupiter } from "./data/planets/jupiter";
 import { mars } from "./data/planets/mars";
 import { mercury } from "./data/planets/mercury";
 import { neptune } from "./data/planets/neptun";
-import { PlanetsEnum } from "./data/planets/planets-enum";
 import { saturn } from "./data/planets/saturn";
-import { sun } from "./data/planets/sun";
 import { uranus } from "./data/planets/uranus";
 import { venus } from "./data/planets/venus";
+import { MainGridHelper } from "./helpers/segments-of-main/main-grid-helper";
+import { MainISSHelper } from "./helpers/segments-of-main/main-iss-helper";
+import { MainLightsHelper } from "./helpers/segments-of-main/main-lights-helper";
+import { MainPlanetsHelper } from "./helpers/segments-of-main/main-planets-helper";
+import { MainResizeHelper } from "./helpers/segments-of-main/main-resize-helper";
 import { MainUIHelper } from "./helpers/UI/main-ui-helper";
+import "./style/main.css";
 
-const gui = new dat.GUI();
-
+//Global Variables
+const canvas = document.querySelector("canvas.webgl");
+const scene = new CustomScene();
+const camera = new CustomCamera();
+const controls = new CustomControls(camera.getCamera(), canvas);
+const renderer = new CustomRenderer({
+  canvas: canvas,
+  antialias: true,
+});
 //FRONT - UI
 MainUIHelper();
+//Load Planets Models
+MainPlanetsHelper(scene);
+//Load Grid
+MainGridHelper(scene);
+//Load Lights
+MainLightsHelper(scene);
+//Load ISS
+const iss = MainISSHelper(scene);
+//Resize Canvas
+MainResizeHelper(camera);
+
+//RandomMethods
+scene.addObjToScene(camera.getCamera());
 
 //api call
 // FetchData();
 // setInterval(FetchData, 30000);
 
-const canvas = document.querySelector("canvas.webgl");
-const scene = new CustomScene();
-
-const size = 100;
-const divisions = 10;
-
-const gridHelper = new THREE.GridHelper(size, divisions);
-//scene.addObjToScene( gridHelper );
-
-sun.setupScene(scene);
-sun._LoadFBXModel(PlanetsEnum.sun, 0.00001);
-mercury.setupScene(scene);
-mercury._LoadFBXModel(PlanetsEnum.mercury, 0.1);
-venus.setupScene(scene);
-venus._LoadFBXModel(PlanetsEnum.venus, 0.1);
-earth.setupScene(scene);
-earth._LoadFBXModel(PlanetsEnum.earth, 0.1);
-mars.setupScene(scene);
-mars._LoadFBXModel(PlanetsEnum.mars, 0.1);
-jupiter.setupScene(scene);
-jupiter._LoadFBXModel(PlanetsEnum.jupiter, 0.01);
-saturn.setupScene(scene);
-saturn._LoadFBXModel(PlanetsEnum.saturn, 0.01);
-uranus.setupScene(scene);
-uranus._LoadFBXModel(PlanetsEnum.uranus, 0.05);
-neptune.setupScene(scene);
-neptune._LoadFBXModel(PlanetsEnum.neptune, 0.05);
-
-var lights = [];
-lights[0] = new THREE.PointLight(0xffffff, 1, 0);
-lights[1] = new THREE.AmbientLight(0xffffff, 0.1);
-
-lights[0].position.set(0, 500, 0);
-lights[0].intensity = 2;
-
-scene.addObjToScene(lights[0]);
-scene.addObjToScene(lights[1]);
-
-var iss = new ISS();
-
-const scale = 0.002;
-
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/arrayport1.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "arrayport1"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/arrayport2.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "arrayport2"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/arraystar1.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "arraystar1"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/arraystar2.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "arraystar2"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/columbus.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "columbus"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/destiny.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "destiny_USA"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/ELC.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "ELC"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/ELC2.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "ELC2"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/frame.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "frame"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/harmony.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "harmony_mod"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/IDA-2.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "IDA-2"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/idkman.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "idkman"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/isscombine.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "isscomine_idk"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/jemELM-ps.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "jem_elm_ps"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/jemRMS.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "JEME"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/KiboJEM.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "Kibo_JEM"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/NaukaLAB.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "Nauka_LAB"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/p1truss.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "P1truss_segment"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/PMA-2.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "PMA-2"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/s1truss.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "S1truss_segment"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/unity_node.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "unity_node"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/unitynode1.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "unity_node1"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/zarya_chyba.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "zarya"
-);
-iss.loadPartOfModel(
-  scene,
-  "http://localhost:8000/station/zvezda.fbx",
-  scale,
-  new ThirdDimensionVector(0, 100, 0),
-  "zvezda"
-);
-// iss.loadPartOfModel(scene,'http://localhost:8000/station/stacja_all.fbx',0.1,new ThirdDimensionVector(100,100,0),'stacja');
-
-/**
- * Sizes
- */
-const sizes = {
-  width: window.innerWidth,
-  height: window.innerHeight,
-};
-
-window.addEventListener("resize", () => {
-  // Update sizes
-  sizes.width = window.innerWidth;
-  sizes.height = window.innerHeight;
-
-  // Update camera
-  camera.getCamera().aspect = sizes.width / sizes.height;
-  camera.getCamera().updateProjectionMatrix();
-});
-
-/**
- * Camera
- */
-// Base camera
-const camera = new CustomCamera();
-scene.addObjToScene(camera.getCamera());
-
-// Controls
-const controls = new CustomControls(camera.getCamera(), canvas);
-/**
- * Renderer
- */
-const renderer = new CustomRenderer({
-  canvas: canvas,
-  antialias: true,
-});
-
-/**
- * Animate
- */
-const clock = new THREE.Clock();
+// Timers For Planets
 let mercury_timer = 0;
 let venus_timer = 0;
 let earth_timer = 0;
@@ -319,8 +86,6 @@ const tick = () => {
         earth.mesh.position.z + 20 * Math.sin(iss_timer)
       )
     );
-
-    // camera.getCamera().position.setLength(camera.getFar() - camera.getNear());
   }
 
   if (mercury.mesh != undefined) {
@@ -373,10 +138,8 @@ const tick = () => {
 
   // Update controls
   controls.getControls().update();
-  //earth.movePlanet
   // Render
   renderer.render(scene.getScene(), camera.getCamera());
-
   // Call tick again on the next frame
   window.requestAnimationFrame(tick);
 };
