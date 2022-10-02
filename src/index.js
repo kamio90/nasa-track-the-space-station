@@ -2,6 +2,7 @@ import { CustomCamera } from "./class/threejs/custom-camera";
 import { CustomControls } from "./class/threejs/custom-controlls";
 import { CustomRenderer } from "./class/threejs/custom-renderer";
 import { CustomScene } from "./class/threejs/custom-scene";
+import { MainChangeColorOnClickHelper } from "./helpers/segments-of-main/main-change-color-on-click-helper";
 import { MainGridHelper } from "./helpers/segments-of-main/main-grid-helper";
 import { MainISSHelper } from "./helpers/segments-of-main/main-iss-helper";
 import { MainISSMoveHelper } from "./helpers/segments-of-main/main-iss-move-helper";
@@ -81,6 +82,8 @@ const tick = () => {
 
   // Update controls
   controls.getControls().update();
+  // Clicker Color change
+  MainChangeColorOnClickHelper(renderer, camera);
   // Render
   renderer.render(scene.getScene(), camera.getCamera());
   // Call tick again on the next frame
