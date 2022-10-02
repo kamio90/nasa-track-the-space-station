@@ -1,148 +1,171 @@
-*
-{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body,
-html
-{
-    overflow: hidden;
+html {
+  overflow: hidden;
 }
 
-.webgl{
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 70%;
-    height: 70%;
-    background: #000000;
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 70%;
+  height: 70%;
+  background: #000000;
 }
 
 .left-panel-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 24%;
-    height: 100%;
-    background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 24%;
+  height: 100%;
+  background-color: white;
 }
 
 .left-blue-panel-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 5%;
-    height: 100%;
-    background-color: lightblue;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 5%;
+  height: 100%;
+  background-color: lightblue;
 }
 
 .left-nav-bar-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 20%;
-    height: 100%;
-    background-color: blue;
-    transform: translateX(-100%);
-    transition: all .5s linear;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 20%;
+  height: 100%;
+  background-color: blue;
+  transform: translateX(-100%);
+  transition: all 0.5s linear;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.clock {
+  position: absolute;
+  color: #000000;
+  top: 0;
+  left: 30%;
+  font-size: 30px;
+  z-index: 100;
+}
+
+.multiply {
+  position: absolute;
+  top: 0;
+  left: 45%;
+  font-size: 30px;
+  z-index: 100;
+}
+
+.x5 {
+  left: 60%;
+}
+
+.x10 {
+  left: 75%;
 }
 .dates-holder {
-    flex-basis: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  flex-basis: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .dates-cell {
-    flex-basis: 50%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    height: 30vh;
-    overflow: scroll;
+  flex-basis: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  height: 30vh;
+  overflow: scroll;
 }
 
 .show-case-information {
-    font-size: 30px;
-    color: black;
-    position: absolute;
-    z-index: 100;
-    top: 0;
-    left: 10%;
+  font-size: 30px;
+  color: black;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 10%;
 }
 
 .nav-column-item {
-    flex-basis: 100%;
-    color: white;
+  flex-basis: 100%;
+  color: white;
 }
 
 .left-nav-bar-container.show {
-    transform: translateX(0);
-    transition: all .5s linear;
+  transform: translateX(0);
+  transition: all 0.5s linear;
 }
 
 .left-nav-bar-btn-menu {
-    position: fixed;
-    top: 10%;
-    left: 0;
-    z-index: 2;
-    width: 5%;
-    height: 5%;
-    background-color: blue;
-    transform: translateX(0);
-    transition: all .5s linear;
-    border-radius: 0% 25% 25% 0%;
+  position: fixed;
+  top: 10%;
+  left: 0;
+  z-index: 2;
+  width: 5%;
+  height: 5%;
+  background-color: blue;
+  transform: translateX(0);
+  transition: all 0.5s linear;
+  border-radius: 0% 25% 25% 0%;
 }
 
 .left-nav-bar-container h1 {
-    text-align: center;
-    flex-basis: 100%;
-    color: white;
-    font-size: 14px;
+  text-align: center;
+  flex-basis: 100%;
+  color: white;
+  font-size: 14px;
 }
 
 .left-nav-bar-btn-menu.show {
-    transform: translateX(400%);
-    transition: all .5s linear;
+  transform: translateX(400%);
+  transition: all 0.5s linear;
 }
 
 .top-panel-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    height: 20%;
-    background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 20%;
+  background-color: white;
 }
 
 .right-panel-container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 1;
-    width: 3%;
-    height: 100%;
-    background-color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 3%;
+  height: 100%;
+  background-color: white;
 }
 
 .down-panel-container {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    z-index: 1;
-    width: 100%;
-    height: 5%;
-    background-color: white;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  height: 5%;
+  background-color: white;
 }
