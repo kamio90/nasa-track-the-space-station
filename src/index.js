@@ -4,6 +4,7 @@ import "./style/main.css";
  * GUI Controls
  */
 import * as dat from "dat.gui";
+import { FetchData } from "./api/fetch-data";
 import { CustomCamera } from "./class/threejs/custom-camera";
 import { CustomControls } from "./class/threejs/custom-controlls";
 import { CustomRenderer } from "./class/threejs/custom-renderer";
@@ -22,6 +23,10 @@ import { ISS } from "./class/structural/iss";
 import { ThirdDimensionVector } from "./class/types/third-dimension-vector";
 
 const gui = new dat.GUI();
+
+//api call
+FetchData();
+setInterval(FetchData, 30000);
 
 const canvas = document.querySelector("canvas.webgl");
 const scene = new CustomScene();
@@ -193,14 +198,7 @@ const tick = () => {
     neptune.mesh.position.x = 400 * Math.cos(neptune_timer);
     neptune.mesh.position.z = 400 * Math.sin(neptune_timer);
     neptune.updatePlanetPosition();
-  } 
-
-
-
-
-
-
-
+  }
 
   // Update controls
   controls.getControls().update();
