@@ -21,6 +21,12 @@ export class ISS {
       obj.position.y = positionVector.getY();
       obj.position.z = positionVector.getZ();
       obj.updateMatrix();
+      this._createPartOfModelObject(
+            this.partsOfModel.length + 1,
+            nameOfPartModel,
+            positionVector,
+            obj,
+          );
       scene.addObjToScene(obj);
     });
        
@@ -43,14 +49,12 @@ export class ISS {
     // });
   }
 
-  _createPartOfModelObject(id, name, position, mesh, color) {
+  _createPartOfModelObject(id, name, position, mesh) {
     const object = {
       id: id,
       name: name,
       position: position,
       mesh: mesh,
-      color: color,
-      baseColor: color,
     };
 
     this.partsOfModel.push(object);
